@@ -1,5 +1,7 @@
 %heading {
-    @include hyphens(auto);
+    word-wrap: break-word;
+
+
     font-family: $font;
     font-weight: 600;
     letter-spacing: -.025em;

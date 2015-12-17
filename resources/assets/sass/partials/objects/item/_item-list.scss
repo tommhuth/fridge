@@ -10,10 +10,9 @@
     overflow: auto;
 
     li {
-        @include hyphens(auto);
         box-sizing: border-box;
         padding-right: 1em;
-        margin-bottom: .75em;
+        margin-bottom: 1em;
         position: relative;
         float:left;
         width: 50%;
@@ -27,9 +26,8 @@
             padding-right: 0;
         }
 
-        a {
-            margin-bottom: .15em;
-            display: inline-block;
+        a { 
+            word-wrap: break-word;
         }
 
         button {
