@@ -1,0 +1,24 @@
+.is-global-error {
+    color: #FFF;
+    background-color: $blue;
+}
+
+.global-error {
+    @include transform(translateY(-50%));
+    font-size: 3em;
+    font-weight: 600;
+    position: absolute;
+    text-align: center;
+    left:50%;
+    width: 12em;
+    margin-left: -6em;
+    top: 50%;
+    line-height: .95;
+
+    @media (max-width: 38em ) {
+        left: .5em;
+        right: .5em;
+        width: auto;
+        margin-left: 0;
+    }
+}

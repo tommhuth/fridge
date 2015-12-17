@@ -1,0 +1,25 @@
+.fieldset-list {
+    overflow: hidden;
+
+    > li {
+        margin-bottom: 1.15em;
+        float:left;
+        width:100%;
+        box-sizing: border-box;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.column {
+            width: auto;
+            padding-right: 1.5em ;
+        }
+
+        @media (max-width: 37.5em) {
+            float:none !important;
+            width: 100% !important;
+            padding-right: 0 !important;
+        }
+    }
+}

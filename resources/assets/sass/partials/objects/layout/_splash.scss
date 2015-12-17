@@ -1,0 +1,39 @@
+.splash {
+    position: fixed;
+    z-index: 1001;
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
+    background: #FFF;
+
+    .error-message {
+        position: absolute;
+        left:50%;
+        top: 50%;
+        margin-top: 1em;
+        text-align: center;
+        width: 25em;
+        margin-left: -12.5em;
+        display: none;
+        
+        &.on {
+            display: block;
+        }
+    }
+
+    .icon {
+        color: $blue;
+        font-size: 2em;
+        position: absolute;
+        top: 50%;
+        left:50%;
+        margin: -1em 0 0 -.5em;
+    }
+
+    .icon-repeat {
+        @include animation(spin 1s linear infinite);
+        @include transform-origin(50% 53.5%);
+        display: block;
+    }
+}

@@ -1,0 +1,145 @@
+.dropdown {
+    font-size: 1.3em;
+    display: inline-block;
+    margin:0 .35em .75em 0;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    vertical-align: middle;
+    text-transform: lowercase;
+
+    @media (max-width: 35em) {
+        display: block;
+        margin-right: 0;
+    }
+
+    .hero-box & {
+        color: #FFF;
+        margin: 0;
+    }
+
+    &.is-active {
+        z-index: 99;
+    }
+
+    .selected {
+        padding: .4em .8em;
+        line-height: 1.2;
+        border: .125em solid #000;
+        overflow:hidden;
+        position: relative;
+
+        .hero-box & {
+            border-color: #FFF;
+        }
+
+        span {
+            position: relative;
+            display: inline-block;
+            top: 0.1em;
+            margin-left: .35em;
+
+            @media (max-width: 35em) {
+                position: absolute;
+                display: block;
+                right: 1em;
+                top: 50%;
+                margin-top: -.5em;
+            }
+        }
+
+        &::before {
+            @include transform(translate(-50%, -50%));
+            @include transition(width .25s, padding-bottom .25s );
+            content: "";
+            width:0;
+            padding-bottom: 0;
+            display: block;
+            position: absolute;
+            background: #000;
+            z-index: -1;
+            top: 50%;
+            border-radius: 50%;
+            left: 50%;
+            opacity: 0;
+
+            .hero-box & {
+                background: #FFF;
+            }
+        }
+
+        &:focus, &:hover{
+            color: #FFF;
+
+            .hero-box & {
+                color: $blue;
+            }
+
+            &::before {
+                opacity: 1;
+                width: 120%;
+                padding-bottom: 120%;
+            }
+        }
+    }
+    
+    .options {
+        position: absolute;
+        left:0;
+        top:0;
+        min-width: 100%;
+        background: rgba(red, .2);
+        background: #000;
+        color: #FFF;
+        padding: .5em 0  .85em 0;
+        margin-top: -.5em;
+
+        .hero-box & {
+            background: #FFF;
+            color: #000;
+        }
+
+        &.ng-hide-add {
+            @include transition( all .2s      );
+
+            @include transform( scale(1));
+            opacity: 1;
+
+            &.ng-hide-add-active {
+                @include transform( scale(1.15));
+                opacity: 0;
+            }
+        }
+
+        &.ng-hide-remove {
+            @include transition(all .2s);
+            @include transform( scale(1.15));
+
+            &.ng-hide-remove-active {
+                @include transform(scale(1));
+            }
+        }
+
+        li {
+            margin-bottom: -.35em;
+            position: relative;
+            white-space: nowrap;
+            line-height: 1.2;
+            padding: .525em .925em ;
+
+            &:hover, &:focus {
+                background: #222;
+                z-index: 1;
+
+                .hero-box & {
+                    background: #DDD;
+                }
+            }
+
+            &.is-selected {
+                color: $blue;
+            }
+        }
+    }
+}
+

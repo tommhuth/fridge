@@ -1,0 +1,56 @@
+.panel {
+    color: #FFF;
+    background: $blue;
+    position: fixed;
+    padding: 2em 15% 2.25em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    @media (max-width: 31.5em) {
+        width: auto;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    &.error {
+        background: $red;
+    }
+
+    &.ng-hide-add {
+        @include transition(bottom .5s);
+        bottom: 0;
+    }
+
+    &.ng-hide-add.ng-hide-add-active {
+        bottom: -15em;
+    }
+
+    &.ng-hide-remove {
+        @include transition(bottom .5s);
+        bottom: -15em;
+    }
+
+    &.ng-hide-remove.ng-hide-remove-active {
+        bottom: 0;
+    }
+
+    p {
+        margin: 0 0 .25em 0;
+        font-size: 1.5em;
+        line-height: 1.1;
+    }
+
+    .clean-button {
+        letter-spacing: .05em;
+        opacity: .5;
+        text-transform: uppercase;
+        font-size: 1rem;
+
+        &:hover, &:focus {
+            border-bottom: 1px solid #FFF;
+            margin-bottom: -1px;
+        }
+    }
+}

@@ -1,0 +1,121 @@
+.skip-to-content {
+    @include transition(top .3s);
+    @include transform(translateX(-50%));
+    position: absolute;
+    top:-5em;
+    left:50%;
+    letter-spacing: .05em;
+    font-size: .65em;
+    text-transform: uppercase;
+    z-index: 501;
+    background: $blue;
+    color: #FFF;
+    display: block;
+    padding: 0.85em 1.65em;
+
+    &:focus, &:hover {
+        color: #FFF;
+        top:0;
+    }
+
+    .is-special & {
+        background: #FFF;
+        color: $blue;
+    }
+}
+
+.nav {
+    @include transition-property(transform );
+    @include transition-duration(.4s );
+    position: relative;
+    z-index: 1000;
+    right:0;
+    height: 1px; // fix for ie11 offset bug
+    margin-top: -1px;
+
+    &.offset {
+        @include transform(translateX(-5rem));
+    }
+
+    &.is-on {
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom: 0;
+        background: #000;
+        color: #FFF;
+        height: auto;
+        margin-top:0;
+
+        .menu {
+            display: block;
+        }
+
+        .toggler {
+            color: $blue !important;
+        }
+    }
+
+    .toggler {
+        position: absolute;
+        left:0;
+        top: 2em;
+
+        button {
+            font-size: 1.75em;
+            background: transparent;
+            border: none;
+            padding: 0;
+
+            &:focus {
+                text-shadow: 0 0 .5em rgba(#000, .5);
+
+                .is-special & {
+                    text-shadow: 0 0 .5em rgba(#FFF, .5);
+                }
+            }
+        }
+    }
+
+    .logout-button {
+        top: 2em;
+        right: 15%;
+        position: fixed;
+        display: block;
+        opacity: .1;
+
+        span {
+            font-size: 1.75em;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 37.5em) {
+            right: 2rem;
+        }
+    }
+
+    .container {
+        height: 100%;
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        left:0;
+        bottom: .5em;
+
+        li {
+            margin-bottom: .25em;
+
+            @media (max-width: 31.5em) {
+                margin-bottom: .5em;
+            }
+        }
+    }
+
+}
+

@@ -1,0 +1,73 @@
+%heading {
+    @include hyphens(auto);
+    font-family: $font;
+    font-weight: 600;
+    letter-spacing: -.025em;
+    line-height: .85;
+}
+
+////////////////////////////////////////////
+
+body {
+    font-family: $font;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.4;
+    color: #000;
+
+    $size: 56;
+    $font-size: 1;
+
+    @while $size < 130 {
+        @media (min-width: $size + em){
+            font-size: $font-size + em;
+        }
+
+        $size: $size + 12.5;
+        $font-size: $font-size + .15;
+    }
+}
+
+.alpha {
+    @extend %heading;
+    font-size:7em;
+    text-transform: lowercase;
+
+    @media (max-width: 31.5em) {
+        font-size: 5.5em;
+    }
+}
+
+.beta {
+    @extend %heading;
+    font-size: 5em;
+    text-transform: lowercase;
+
+    @media (max-width: 31.5em) {
+        font-size: 3.5em;
+    }
+}
+
+.gamma {
+    @extend %heading;
+    font-size:1.5em;
+}
+
+.text {
+    margin: 0 0 1em ;
+    line-height: 1.5;
+    max-width: 26em;
+}
+
+.intro {
+    font-size: 1.25em;
+    margin:  1em 0;
+}
+
+p a:hover, p a:focus {
+    text-decoration: underline;
+}
+
+.nowrap{
+    white-space: nowrap;
+}

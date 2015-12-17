@@ -1,0 +1,35 @@
+<div class="container page-bottom-margin">
+    <h1 class="beta offset-small">What&rsquo;s in <br>that fridge?</h1>
+
+    <form ng-submit="ctrl.findOrCreate()" name="ctrl.form">
+        <fieldset class="search input-pair">
+            <legend class="visually-hidden">Search the fridge</legend>
+
+            <label class="visually-hidden" for="keyword">Search term</label>
+            <input class="input" name="keyword" id="keyword" autocomplete="off" type="text" ng-model="ctrl.keyword" placeholder="Search..." ng-change="ctrl.search()">
+
+            <button type="submit" tabindex="-1" ng-show="!ctrl.status.isCreating && !ctrl.status.isSearching">
+                <span class="icon-search"></span>
+                <span class="visually-hidden">Find or create</span>
+            </button>
+
+            <div class="spinner" ng-show="ctrl.status.isCreating || ctrl.status.isSearching">
+                <span class="icon-repeat" ></span>
+            </div>
+        </fieldset>
+
+        <p aria-live="assertive" class="created-message" ng-show=" ctrl.hasSearched && !ctrl.items.length && !ctrl.createdItem.name && ctrl.keyword">
+            Can&rsquo;t find and anything for <strong>{{ ctrl.keyword }}</strong>, repeat submit to create.
+        </p>
+
+        <p aria-live="assertive" class="created-message" ng-show="ctrl.createdItem.name">
+            Created <strong>{{ ctrl.createdItem.name }}</strong>, repeat submit to view.
+        </p>
+
+        <ul class="autocomplete-list" ng-show="!ctrl.createdItem.name && ctrl.keyword">
+            <li ng-repeat="item in ctrl.items ">
+                <a href="items/{{item.slug}}">{{ item.name }} <span class="icon-arrow-right"></span></a>
+            </li>
+        </ul>
+    </form>
+</div>

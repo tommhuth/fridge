@@ -1,0 +1,91 @@
+.button {
+    padding: 0;
+    line-height: 2.15em;
+    border: .125em solid #000;
+    overflow:hidden;
+    vertical-align: middle;
+    position: relative;
+    display: inline-block;
+    box-sizing:border-box;
+    background-color: transparent;
+    margin-right: .25em;
+    text-transform: lowercase;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &::before {
+        @include transform(translate(-50%, -50%));
+        content: "";
+        width:0;
+        padding-bottom: 0;
+        display: block;
+        position: absolute;
+        background: #000;
+        margin: 0;
+        z-index: 0;
+        top: 50%;
+        border-radius: 50%;
+        left: 50%;
+        opacity: 0;
+    }
+
+    &.is-icon-only span{
+        line-height: 2.6em;
+    }
+
+    span {
+        z-index: 1;
+        position: relative;
+        display: block;
+        margin: 0 1em;
+        line-height: 2.25em;
+    }
+
+    &:not(:disabled) {
+        &:focus, &:hover, &:hover {
+            color: #FFF;
+
+            &::before {
+                @include transition(width .25s, padding-bottom .25s );
+                opacity: 1;
+                width: 135%;
+                padding-bottom: 135%;
+            }
+        }
+    }
+
+    &.is-inverted {
+        border-color: #FFF;
+        color: #FFF;
+        
+        &:not(:disabled) {
+            &:focus, &:hover, &:hover {
+                color: $blue;
+
+                &::before {
+                    background: #FFF;
+                }
+            }
+        }
+    }
+}
+
+.clean-button {
+    background: transparent;
+    border: none;
+    display: inline-block;
+    padding: 0;
+    font: inherit;
+    color:inherit;
+    
+    &.fluffy {
+        padding: .5em;
+    }
+    
+    &:hover, &:active, &:focus {
+        opacity: 1;
+    }
+}
+

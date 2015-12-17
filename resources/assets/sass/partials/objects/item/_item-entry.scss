@@ -1,0 +1,64 @@
+.item-entry {
+    @include transition-property(right );
+    @include transition-duration(.4s );
+    text-align: center;
+    position: relative;
+    overflow: auto;
+    right: 0;
+
+    &.offset {
+        right: 5em;
+    }
+
+    a:hover, a:focus, a:active {
+        color: #FFF;
+    }
+
+    .item-status {
+        font-size: 4.5em;
+        margin-bottom: -.15em;
+    }
+
+    .item-details {
+        margin:  1em 0 1.5em ;
+        font-size: 1.2em;
+    }
+
+    .button {
+        margin: 0 .25em;
+
+        span {
+            font-size: .8em;
+        }
+    }
+}
+
+.favorite-and-edit {
+    @include transition(margin-right .4s);
+    position: fixed;
+    right: 50%;
+    width: 10em;
+    margin-right: -5em;
+    text-align: center;
+    bottom: 2em;
+
+    &.offset {
+        margin-right: 0;
+    }
+    
+    @media (max-height: 40em) {
+        position: static;
+        margin: 2.5em 0 3rem;
+        width: auto;
+    }
+
+    button {
+        font-size: 1.5em;
+        opacity: 0.24;
+        margin: 0 .5em;
+
+        &:hover, &:focus {
+            opacity: 1;
+        }
+    }
+}

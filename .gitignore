@@ -1,0 +1,13 @@
+/bootstrap/compiled.php
+/vendor
+/node_modules
+/public/css/**
+/public/build/**
+/public/js/**
+/public/font/*
+.idea
+.env.*.php
+.env.php
+.env.*
+.env
+!.env.example

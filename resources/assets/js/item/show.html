@@ -1,0 +1,95 @@
+<div class="container item-entry"  ng-class=" { offset:  ctrl.isOffset() }">
+    <div class="offset-small item-status">
+        <span class="icon-check" ng-show="ctrl.item.amount"></span>
+        <span class="icon-cross" ng-show="!ctrl.item.amount"></span>
+    </div>
+
+    <h1 class="beta item-name">
+        {{ ctrl.item.name }}
+    </h1>
+
+    <p class="item-details" ng-show="ctrl.item.amount">
+        It&rsquo;s in <a tabindex="{{ctrl.isOffset() ? '-1' : '0'}}" href="items">the fridge</a> &times; {{ ctrl.item.getAmount() ?  ctrl.item.getAmount() : '' }} {{ ctrl.item.isFractionAmount() ?  '&frac12' : '' }}
+    </p>
+
+    <p class="item-details" ng-show="!ctrl.item.amount">
+        Ooops, ain&rsquo;t got that
+    </p>
+
+    <button class="button is-inverted is-icon-only"
+            ng-click="ctrl.increase()"
+            tabindex="{{ctrl.isOffset() ? '-1' : '0'}}">
+        <span class="icon-plus"></span>
+        <span class="visually-hidden">Increase amount</span>
+    </button>
+
+    <button class="button is-inverted is-icon-only"
+            ng-disabled="ctrl.item.amount <= 0"
+            tabindex="{{ctrl.isOffset() ? '-1' : '0'}}"
+            ng-click="ctrl.decrease()">
+        <span class="icon-minus"></span>
+        <span class="visually-hidden">Decrease amount</span>
+    </button>
+
+    <div class="favorite-and-edit"  ng-class=" { offset:  ctrl.isOffset() }">
+        <button class="clean-button"
+                tabindex="{{ctrl.isOffset() ? '-1' : '0'}}"
+                ng-click="ctrl.item.toggleFavorite()">
+            <span class="icon-heart" ng-class="{ 'icon-heart-o': !ctrl.item.favorite, 'icon-heart': ctrl.item.favorite }  "></span>
+            <span class="visually-hidden">
+                {{ ctrl.item.favorite ? 'Remove as favorite' : 'Set as favorite' }}
+            </span>
+        </button>
+        <button class="clean-button"
+                tabindex="{{ctrl.isOffset() ? '-1' : '0'}}"
+                ng-click="ctrl.toggleEdit(true)">
+            <span class="icon-cog"></span>
+            <span class="visually-hidden">Edit item</span>
+        </button>
+    </div>
+
+</div>
+
+<section>
+    <h2 class="visually-hidden">Edit {{ ctrl.item.name }}</h2>
+
+    <form class="edit-form" ng-show="ctrl.editVisible" ng-submit="ctrl.update()" ng-class="{ unloaded : true }">
+        <div class="edit-form-overlay" ng-click="ctrl.toggleEdit(false)" tabindex="-1"></div>
+        <fieldset class="edit-form-wrapper">
+            <legend class="visually-hidden">Edit</legend>
+
+            <ul class="fieldset-list">
+                <li>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" ng-model="ctrl.input.name" required class="full text-input">
+                </li>
+                <li>
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" step=".5" min="0" required ng-model="ctrl.input.amount" class="small  text-input">
+                </li>
+                <li>
+                    <fieldset class="input-group">
+                        <legend>Category</legend>
+                        <ul>
+                            <li ng-repeat="option in ctrl.categories">
+                                <label>
+                                    <input type="radio" name="category" ng-model="ctrl.input.category_id" ng-value="option.id">
+                                    <span>{{ option.name }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </fieldset>
+                </li>
+            </ul>
+
+            <div class="button-row">
+                <button class="button " type="submit">
+                    <span>Save</span>
+                </button>
+                <button class="button" type="button" ng-click="ctrl.toggleEdit(false)">
+                    <span>Back</span>
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</section>

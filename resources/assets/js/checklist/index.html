@@ -1,0 +1,16 @@
+<div class="container page-bottom-margin">
+    <h1 class="beta offset-small">Checklist</h1>
+    <p class="text intro">Everything you need to do something about ends up here. Stop losing that note while doing the groceries. </p>
+
+    <button class="button clear-list-button" ng-click="ctrl.clearList()" type="button" ng-show="ctrl.items.length" ><span>Clear list</span></button>
+
+    <ul class="items-list" ng-show="ctrl.items.length" >
+        <li ng-repeat="checklistItem in  ctrl.items  " ng-class="{ 'is-empty': !checklistItem.item.amount }">
+            <a href="items/{{ checklistItem.item.slug }}">{{ checklistItem.item.name }}</a>
+            <span class="amount">&times; {{ checklistItem.item.getAmount() || ''  }} {{ checklistItem.item.isFractionAmount() ?  '&frac12' : '' }}</span>
+        </li>
+    </ul>
+
+    <p ng-show="!ctrl.items.length" class="found-nothing text">Ain&rsquo;t got anything yet. Find something in <a href="/fridge">the fridge</a> and add it here by sliding or right clicking.</p>
+
+</div>

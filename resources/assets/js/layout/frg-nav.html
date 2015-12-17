@@ -1,0 +1,33 @@
+<nav class="nav"  ng-class="{'is-on': nav.showMenu(), offset: nav.isOffset() }" tabindex="-1">
+    <div class="container">
+        <frg-view-spinner></frg-view-spinner>
+
+        <div class="toggler">
+            <button ng-click="nav.showMenu() ? nav.setMenu(false) : nav.setMenu(true)" type="button" tabindex="{{ nav.isOffset() ? '-1' : '0'}}">
+                <span class="icon-menu" ng-show="!nav.showMenu()"></span>
+                <span class="icon-cross" ng-show="nav.showMenu()"></span>
+                <span class="visually-hidden">{{ nav.showMenu() ? 'Hide menu' : 'Show menu' }}</span>
+            </button>
+        </div>
+
+        <ul class="menu beta" frg-close-menu aria-live="polite">
+            <li>
+                <a href="/" >Home</a>
+            </li>
+            <li>
+                <a href="/items" >The fridge</a>
+            </li>
+            <li>
+                <a href="/checklist">Checklist</a>
+            </li>
+            <li>
+                <a href="/about">About</a>
+            </li>
+        </ul>
+
+        <a href="/logout" class="logout-button" target="_self" ng-show="nav.showMenu()">
+            <span class="icon-power" ng-show="nav.showMenu()"></span>
+            <span class="visually-hidden">Show/hide menu</span>
+        </a>
+    </div>
+</nav>

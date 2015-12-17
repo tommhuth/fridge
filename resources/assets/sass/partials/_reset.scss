@@ -1,0 +1,99 @@
+@-ms-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
+
+* {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+html {
+    -ms-content-zooming: none;
+    -ms-touch-action: pan-x pan-y;
+    cursor: default;
+}
+
+body, body * {
+    margin:0;
+    padding: 0;
+    list-style-type: none;
+    border: none;
+}
+
+html, body { height: 100%; }
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+    &:focus, &:hover {
+        color: $blue;
+    }
+}
+
+
+a, button, [tabindex="0"]:not(input)  {
+    @include user-select(none);
+
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+
+    &:active {
+        opacity: .5;
+    }
+    
+    &:disabled {
+        opacity: .5;
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+button {
+    line-height: 1;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0
+}
+
+:invalid {
+    box-shadow: none;
+}
+
+input {
+    border-radius: 0;
+    line-height: inherit;
+
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 9999em $blue inset;
+        -webkit-text-fill-color: #FFF !important;
+    }
+}
+
+input, button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+a:active {
+    background-color: transparent;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}

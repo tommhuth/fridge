@@ -1,0 +1,32 @@
+<div class="container page-bottom-margin">
+    <h1 class="beta offset-small">The fridge</h1>
+
+    <fieldset class="filter-list">
+        <legend class="visually-hidden">Filter result list</legend>
+
+        <frg-dropdown active="ctrl.category"
+                  description="Select category"
+                  options="ctrl.categories"></frg-dropdown>
+
+        <frg-dropdown active="ctrl.stock"
+                  description="Select stock type"
+                  options="ctrl.stocks"></frg-dropdown>
+
+    </fieldset>
+
+    <ul class="items-list" ng-show="filteredList.length">
+        <li ng-repeat="item in filteredList = (ctrl.items | filter: ctrl.filterExpression) | orderBy: 'name'"
+            ng-class="{ 'is-empty': !item.amount }" >
+            <a href="items/{{ item.slug }}">{{ item.name }}</a>
+            <span class="nowrap">
+                <span class="amount">&times; {{ item.getAmount() || ''  }} {{ item.isFractionAmount() ?  '&frac12' : '' }}</span>
+                <button ng-show="!item.current_checklist_item" class="clean-button" type="button" ng-click="ctrl.checklistItem(item)">
+                    <span class="icon-plus"></span>
+                    <span class="visually-hidden">Add to checklist</span>
+                </button>
+            </span>
+        </li>
+    </ul>
+
+    <p class="found-nothing text" ng-show="!filteredList.length">Found nothing! Try removing the filtering or start adding some items.</p>
+</div>

@@ -1,0 +1,102 @@
+label[for] {
+    text-transform: uppercase;
+    display: inline;
+    font-size: .75em;
+    opacity: .2;
+    letter-spacing: .025em;
+
+    &::after {
+        content:"\A";
+        display: block;
+        height: .65em;
+        white-space:pre;
+    }
+}
+
+label:not([for]) {
+    position: relative;
+    display: inline-block;
+    padding: .5em;
+    margin: -.5em;
+    cursor: pointer;
+
+    input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    &:hover span::before, input:focus + span::before {
+        color: $blue;
+    }
+
+    input + span {
+        padding-left: 1.35em;
+        position: relative;
+
+        &::before {
+            @extend %icon;
+            font-size: .9em;
+            position: absolute;
+            top: 50%;
+            margin-top: -.5em;
+            left:0;
+            display: block;
+            margin-right: .25em;
+        }
+    }
+
+    input[type=radio] + span {
+        @extend .icon-circle-o;
+    }
+
+    input[type=radio]:checked + span {
+        @extend .icon-dot-circle-o;
+    }
+
+
+    input[type=checkbox] + span {
+        @extend .icon-square;
+    }
+
+    input[type=checkbox]:checked + span {
+        @extend .icon-check-square;
+    }
+}
+
+.text-input {
+    padding: .15em 0 .6em;
+    border: none;
+    border-bottom: .125em solid #CCC;
+    line-height: 1.2;
+    width: 12em;
+    box-sizing: border-box;
+    max-width: 100%;
+
+    &.small {
+        width: 7em;
+    }
+
+    &.medium {
+        width: 15em;
+    }
+
+    &.large {
+        width: 22em;
+
+        @media (max-width: 37.5em ) {
+            width: 100%;
+        }
+    }
+
+    &.full {
+        width: 100%;
+    }
+
+    &:focus {
+        border-color: #000;
+    }
+
+    &.ng-invalid.ng-touched {
+        border-bottom-color: $red;
+    }
+}

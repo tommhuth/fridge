@@ -1,0 +1,35 @@
+.disabled {
+    overflow: hidden;
+}
+
+body {
+    background: #FFF;
+
+    &.is-special {
+        background-color: $blue;
+        color: #FFF;
+    }
+}
+
+
+.view-spinner {
+    color: $blue;
+    font-size: 1.5em;
+    position: fixed;
+    right: 15%;
+    top: 1.45em;
+
+    @media (max-width: 37.5em) {
+        right: 2rem;
+    }
+
+    .is-special & {
+        color: #FFF;
+    }
+
+    span {
+        @include transform-origin(50% 52.5%);
+        @include animation(spin 1s linear infinite);
+        display: inline-block;
+    }
+}

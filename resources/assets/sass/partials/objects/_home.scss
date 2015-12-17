@@ -1,0 +1,38 @@
+.search {
+    margin-top: 2.5em;
+
+}
+
+.autocomplete-list {
+    margin-top: .25em;
+    text-transform: lowercase;
+
+    li {
+        background-color: $light-gray;
+        margin-bottom: .25em;
+
+        a {
+            padding: .75em 5em .75em 1.5em;
+            display: block;
+            position: relative;
+
+            &:hover, &:focus {
+                color: #fff;
+                background: #000;
+            }
+
+            span {
+                font-size: 1.5em;
+                position: absolute;
+                right: .75em;
+                top:50%;
+                margin-top: -.55em;
+                color: #FFF;
+            }
+        }
+    }
+}
+
+.created-message {
+    margin: 1.5em 0;
+}

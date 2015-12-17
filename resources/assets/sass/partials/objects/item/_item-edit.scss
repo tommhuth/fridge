@@ -1,0 +1,86 @@
+.edit-form {
+    @include transition-property(transform );
+    @include transition-duration(.4s );
+    position: fixed;
+    top:-2em;
+    right:0;
+    bottom: -2em;
+    background: #FFF;
+    box-shadow: 0 0 3em rgba(#000, .5);
+    z-index: 500;
+    box-sizing: border-box;
+    width: 45%;
+    display: none;
+    color: #000;
+
+    &.unloaded {
+        display: block;
+    }
+
+    &::before {
+        display: inline-block;
+        height: 100%;
+        width: 1px;
+        margin-right: -.5em;
+        vertical-align: middle;
+        content: '';
+    }
+
+    @media (min-width: 615px) {
+        &.ng-hide-add {
+            @include transform( translateX(0%));
+
+            &.ng-hide-add-active {
+                @include transform( translateX(100%));
+            }
+        }
+
+        &.ng-hide-remove {
+            @include transform( translateX(100%));
+
+            &.ng-hide-remove-active {
+                @include transform( translateX(0%));
+            }
+        }
+    }
+
+    @media (max-width: 614px) {
+        width: 100%;
+
+        &.ng-hide-add {
+            @include transform( translateX(0%));
+
+            &.ng-hide-add-active {
+                @include transform( translateX(100%));
+            }
+        }
+
+        &.ng-hide-remove {
+            @include transform( translateX(100%));
+
+            &.ng-hide-remove-active {
+                @include transform( translateX(0%));
+            }
+        }
+    }
+}
+
+.edit-form-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 3em;
+    box-sizing: border-box;
+    width: 85%;
+}
+
+.edit-form-overlay {
+    position: absolute;
+    right: 100%;
+    width: 222.2222%;
+    bottom: 0;
+    top:0;
+}
+
+.button-row {
+    margin-top: 2em;
+}
