@@ -5,6 +5,8 @@ Because this is such a simple app,  I let the typography be the main design hook
 
 **TODO:** Search/create is currently horrible, needs revision. 
 
+Also note that this should ideally run on HTTPS.
+
 ## Make it your own
 If you want to run this locally fire up `gulp` to generate static resources (js + css + fonts) and do a `migrate` (there’s also a `seeder` available for some startup data). See the example `env file` which also contains the global password used for the app. 
 
